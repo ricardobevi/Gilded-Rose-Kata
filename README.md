@@ -1,5 +1,7 @@
 # Gilded Rose Kata
-Version original en : https://github.com/emilybache/GildedRose-Refactoring-Kata
+
+[Version original](https://github.com/emilybache/GildedRose-Refactoring-Kata)
+
 
 
 ======================================
