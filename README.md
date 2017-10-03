@@ -1,8 +1,11 @@
 # Gilded Rose Kata
 Version original en : https://github.com/emilybache/GildedRose-Refactoring-Kata
 
+
 ======================================
+
 Gilded Rose Requirements Specification
+
 ======================================
 
 Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a
