@@ -1,7 +1,8 @@
 package com.gildedrose;
 
 class GildedRose {
-    Item[] items;
+
+    private Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -58,5 +59,15 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        String str = "";
+        for (Item i : this.items) {
+            str += i.toString();
+            str += "\n";
+        }
+        return str;
     }
 }
