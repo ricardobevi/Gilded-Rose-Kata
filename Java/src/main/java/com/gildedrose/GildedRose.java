@@ -20,18 +20,14 @@ class GildedRose {
     private void updateQualityForOneItem(Item item) {
         updateQualityOfItem(item);
         updateSellInOfItem(item);
-        updateQualityOfExpiredItem(item);
+        if(item.sellIn < 0) {
+            updateQualityOfExpiredItem(item);
+        }
     }
 
     private void updateQualityOfItem(Item item) {
-        if (!item.name.equals("Aged Brie")
-                && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            if (item.quality > 0) {
-                if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                    item.quality = item.quality - 1;
-                }
-            }
-        } else {
+        if (item.name.equals("Aged Brie")
+                || item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             increaseQuality(item);
 
             if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
@@ -43,6 +39,26 @@ class GildedRose {
                     increaseQuality(item);
                 }
             }
+        } else {
+            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                decreaseQuality(item);
+            }
+        }
+    }
+
+    private void updateQualityOfExpiredItem(Item expiredItem) {
+        if (expiredItem.name.equals("Aged Brie")) {
+            increaseQuality(expiredItem);
+        } else if (expiredItem.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            expiredItem.quality = 0;
+        } else if (!expiredItem.name.equals("Sulfuras, Hand of Ragnaros")) {
+            decreaseQuality(expiredItem);
+        }
+    }
+
+    private void updateSellInOfItem(Item item) {
+        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            item.sellIn = item.sellIn - 1;
         }
     }
 
@@ -52,27 +68,9 @@ class GildedRose {
         }
     }
 
-    private void updateQualityOfExpiredItem(Item item) {
-        if (item.sellIn < 0) {
-            if (!item.name.equals("Aged Brie")) {
-                if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    item.quality = 0;
-                } else {
-                    if (item.quality > 0) {
-                        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                            item.quality = item.quality - 1;
-                        }
-                    }
-                }
-            } else {
-                increaseQuality(item);
-            }
-        }
-    }
-
-    private void updateSellInOfItem(Item item) {
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            item.sellIn = item.sellIn - 1;
+    private void decreaseQuality(Item item) {
+        if (item.quality > 0) {
+            item.quality = item.quality - 1;
         }
     }
 
