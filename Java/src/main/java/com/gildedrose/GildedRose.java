@@ -39,20 +39,24 @@ class GildedRose {
                     increaseQuality(item);
                 }
             }
-        } else {
-            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                decreaseQuality(item);
-            }
+        } else if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            decreaseQuality(item);
         }
     }
 
     private void updateQualityOfExpiredItem(Item expiredItem) {
-        if (expiredItem.name.equals("Aged Brie")) {
-            increaseQuality(expiredItem);
-        } else if (expiredItem.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            expiredItem.quality = 0;
-        } else if (!expiredItem.name.equals("Sulfuras, Hand of Ragnaros")) {
-            decreaseQuality(expiredItem);
+        switch (expiredItem.name) {
+            case "Sulfuras, Hand of Ragnaros":
+                break;
+            case "Aged Brie":
+                increaseQuality(expiredItem);
+                break;
+            case "Backstage passes to a TAFKAL80ETC concert":
+                expiredItem.quality = 0;
+                break;
+            default:
+                decreaseQuality(expiredItem);
+                break;
         }
     }
 
