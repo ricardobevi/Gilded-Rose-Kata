@@ -2,6 +2,9 @@ package com.gildedrose;
 
 class GildedRose {
 
+
+    public static final int PASS_SELL_IN_FIRST_LIMIT = 10;
+    public static final int PASS_SELL_IN_SECOND_LIMIT = 5;
     private Item[] items;
 
     public GildedRose(Item[] items) {
@@ -16,7 +19,7 @@ class GildedRose {
 
     private void updateQualityForOneItem(Item item) {
         updateQualityOfItem(item);
-        discountSellInForItemsExceptSulfuras(item);
+        updateSellInOfItem(item);
         updateQualityOfExpiredItem(item);
     }
 
@@ -33,19 +36,21 @@ class GildedRose {
                 item.quality = item.quality + 1;
 
                 if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
+                    if (item.sellIn <= PASS_SELL_IN_FIRST_LIMIT) {
+                        increaseQuality(item);
                     }
 
-                    if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
+                    if (item.sellIn <= PASS_SELL_IN_SECOND_LIMIT) {
+                        increaseQuality(item);
                     }
                 }
             }
+        }
+    }
+
+    private void increaseQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
         }
     }
 
@@ -62,14 +67,12 @@ class GildedRose {
                     item.quality = item.quality - item.quality;
                 }
             } else {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
+                increaseQuality(item);
             }
         }
     }
 
-    private void discountSellInForItemsExceptSulfuras(Item item) {
+    private void updateSellInOfItem(Item item) {
         if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
             item.sellIn = item.sellIn - 1;
         }
