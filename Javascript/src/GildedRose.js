@@ -98,7 +98,7 @@ class GildedRose {
 
     this.items.forEach((item) => {
       string += item.toString();
-      string += '\n';
+      string += '/n';
     });
 
     return string;

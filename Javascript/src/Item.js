@@ -6,7 +6,7 @@ class Item {
   }
 
   toString() {
-    return `${this.name}, ${this.sellIn}, ${this.quality}`;
+    return `${this.name} ${this.sellIn} ${this.quality}`;
   }
 }
 
