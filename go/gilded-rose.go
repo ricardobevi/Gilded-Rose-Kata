@@ -1,6 +1,5 @@
 package main
 
-import "fmt"
 
 type Item struct {
 	name            string
@@ -8,10 +7,12 @@ type Item struct {
 }
 
 func main() {
-	GildedRose()
+	its := []*Item{}
+
+	GildedRose(its)
 }
 
-func GildedRose() {
+func GildedRose(items []*Item) {
 	for i := 0; i < len(items); i++ {
 
 		if items[i].name != "Aged Brie" && items[i].name != "Backstage passes to a TAFKAL80ETC concert" {
