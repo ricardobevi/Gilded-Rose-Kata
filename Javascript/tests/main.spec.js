@@ -3,16 +3,6 @@ import { expect } from 'chai';
 import GildedRose from '../src/GildedRose';
 import Item from '../src/Item';
 
-const printItems = (items) => {
-  let itemsString = '';
-
-  items.forEach((item) => {
-     itemsString += `${item.name} ${item.sellIn} ${item.quality}/n`;
-  });
-
-  return itemsString;
-};
-
 describe('#GildedRose', () => {
   describe('buy item', () => {
       it('should test the store', () => {
@@ -28,7 +18,7 @@ describe('#GildedRose', () => {
 
         [1,2,3,4,5,6,7,8,9,10,11].forEach(() => shop.updateQuality());
 
-        expect(printItems(items)).to.be.equal(
+        expect(shop.toString()).to.be.equal(
           'Sword of Burning Fire -1 14/nAged Brie -1 12/nVest of Hermes -6 0/nBackstage passes to a TAFKAL80ETC concert -1 0/nSulfuras, Hand of Ragnaros 0 80/n'
         );
       });
