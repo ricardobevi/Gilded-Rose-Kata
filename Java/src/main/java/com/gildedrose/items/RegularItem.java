@@ -1,6 +1,12 @@
-package com.gildedrose;
+package com.gildedrose.items;
 
-public class RegularItem extends AbstractItem implements IItem {
+import com.gildedrose.Item;
+
+class RegularItem extends AbstractItem implements IItem {
+
+    RegularItem(Item item){
+        super(item);
+    }
 
     RegularItem(String name, int sellIn, int quality) {
         this.name = name;

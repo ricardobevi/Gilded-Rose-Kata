@@ -1,6 +1,12 @@
-package com.gildedrose;
+package com.gildedrose.items;
 
-public class GoodAgingItem extends AbstractItem implements IItem {
+import com.gildedrose.Item;
+
+class GoodAgingItem extends AbstractItem implements IItem {
+
+    GoodAgingItem(Item item){
+        super(item);
+    }
 
     GoodAgingItem(String name, int sellIn, int quality) {
         this.name = name;

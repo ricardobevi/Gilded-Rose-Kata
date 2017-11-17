@@ -1,17 +1,21 @@
-package com.gildedrose;
+package com.gildedrose.items;
 
-public class DemandedItem extends AbstractItem implements IItem {
+import com.gildedrose.Item;
 
-    private int passSellFirst;
-    private int passSellSecond;
+class DemandedItem extends AbstractItem implements IItem {
+
+    private int passSellFirst = 10;
+    private int passSellSecond = 5;
+
+
+    DemandedItem(Item item){
+        super(item);
+    }
 
     DemandedItem(String name, int sellIn, int quality){
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
-
-        this.passSellFirst = 10;
-        this.passSellSecond = 5;
     }
 
     public void updateQuality() {

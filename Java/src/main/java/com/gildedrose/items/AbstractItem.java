@@ -1,12 +1,22 @@
-package com.gildedrose;
+package com.gildedrose.items;
 
-public abstract class AbstractItem {
+import com.gildedrose.Item;
+
+abstract class AbstractItem {
 
     public String name;
 
     public int sellIn;
 
     public int quality;
+
+    public AbstractItem(){}
+
+    public AbstractItem(Item item){
+        this.name = item.name;
+        this.sellIn = item.sellIn;
+        this.quality = item.quality;
+    }
 
     protected void increaseQuality() {
         if (this.quality < 50) {

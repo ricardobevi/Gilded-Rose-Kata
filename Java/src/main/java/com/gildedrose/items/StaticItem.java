@@ -1,6 +1,12 @@
-package com.gildedrose;
+package com.gildedrose.items;
 
-public class StaticItem extends AbstractItem implements IItem {
+import com.gildedrose.Item;
+
+class StaticItem extends AbstractItem implements IItem {
+
+    StaticItem(Item item){
+        super(item);
+    }
 
     StaticItem(String name, int sellIn, int quality){
         this.name = name;
