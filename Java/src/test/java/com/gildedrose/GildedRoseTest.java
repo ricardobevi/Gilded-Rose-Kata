@@ -10,19 +10,19 @@ import static org.junit.Assert.assertEquals;
 
 public class GildedRoseTest {
 
-    private Item[] items;
+    private IItem[] items;
 
     private GildedRose gildedRose;
 
     @Before
     public void setup() {
-        this.items = new Item[] {
-                new Item("Sword of Burning Fire", 10, 26),
-                new Item("Aged Brie", 10, 0),
-                new Item("Vest of Hermes", 5, 7),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 10, 24),
-                new Item("Sulfuras, Hand of Ragnaros", 0, 80),
-                new Item("Sulfuras, Hand of Ragnaros", -1, 80)
+        this.items = new IItem[] {
+                new RegularItem("Sword of Burning Fire", 10, 26),
+                new GoodAgingItem("Aged Brie", 10, 0),
+                new RegularItem("Vest of Hermes", 5, 7),
+                new DemandedItem("Backstage passes to a TAFKAL80ETC concert", 10, 24),
+                new StaticItem("Sulfuras, Hand of Ragnaros", 0, 80),
+                new StaticItem("Sulfuras, Hand of Ragnaros", -1, 80)
         };
 
         this.gildedRose = new GildedRose( this.items );
